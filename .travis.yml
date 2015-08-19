@@ -1,0 +1,17 @@
+language: python
+python:
+- '2.7'
+script: echo "HI"
+before_install:
+- openssl aes-256-cbc -K $encrypted_54303265598a_key -iv $encrypted_54303265598a_iv
+  -in config.json.enc -out config.json -d
+after_success:
+- if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
+- curl -o $HOME/google_appengine_1.9.25.zip https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.25.zip
+- unzip -q -d $HOME $HOME/google_appengine_1.9.25.zip
+- "$HOME/google_appengine/appcfg.py -A pipctbot  update --oauth2_refresh_token=$REFRESH_TOKEN
+  $TRAVIS_BUILD_DIR"
+- fi
+env:
+  global:
+  - secure: ptuyRIwtOHSHN6I4IHLUW8f5Sedq0ok2DyyXzGlRImTqiUSceMx8f4jE4HRNzrx7ev26Z+ZBw3W8+gNSA2zE/I+E9HUZMftxdnRjlQPBtO5HCBWYRRh7Gq3ZCwXm4FBcz3dJqYOPw9j0Tla2yxqVW48xQz7m26V6K17nLR22MtC6yAIBZosgTFfIZi2OAs7jkNlXJVGqof/vOHNcwi6iUGu52kQZkc/Qr0YJFILbVEJQwzLkFj0gS7Pkp0OWYZCLkCpQ35Ir1KjaEX2JWbl6/Ny4Ttr8uQqfpJTtv2XuCUBaRrWbJp6FjFzlC/ngx52N3U6E5/TjcCY1v5tlCkZcrmPd/fHmTUON0LhptBXdZyx2f1mIQQyFWfwj0ArUfgu0exrQsKNgif61QeeevrpgtsseKmf9WxCt9IdIY7pl5JRDKrOBdE8kXMNkjgrudnU2z2hr+29l2makl/SU0hylHTqga1LnE7dGUhJpueGD20dNMuuRZo2eQkXqE15FvxzqFz0NxrjCpaiRM3AU5Wbek5ZUjb64vwUK/oKLUEBC4JitNt35TYGI+k+H57qkiaZvs6ku+mVdhhAVXmZBk6Jvl2saQHuomnO8ingOFNkRw7G28l2fYmoWU2m5VS57+ZJaJFc+lmH7pFlIb5D3x4X99v1QKphHi9CRTPqoFgC8S+k=
