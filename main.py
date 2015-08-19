@@ -32,4 +32,4 @@ def getUpdates():
 @app.errorhandler(404)
 def page_not_found(e):
     """Return a custom 404 error."""
-    return 'Nothing to see please go away.', 404
+    return 'Nothing to see, please go away.', 404
