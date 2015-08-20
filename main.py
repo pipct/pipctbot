@@ -34,7 +34,7 @@ def getUpdates():
             logging.debug(result)
     if 'voice' in content['message']:
         reply = {
-            "chat_id": content['message']['chat']['id'],
+            "chat_id": content['message']['from']['id'],
             "text": "Please don't use voice messages, or we will find you and we will kill you!"
             }
         result = urllib2.urlopen("https://api.telegram.org/bot" +
