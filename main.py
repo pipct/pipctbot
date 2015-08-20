@@ -22,9 +22,14 @@ def hello():
 def getUpdates():
     content = request.json
     if 'text' in content['message']:
-        reply = {"chat_id": content['message']['chat']['id'], "text": content['message']['text'] }
+        reply = {
+            "chat_id": content['message']['chat']['id'],
+            "text": content['message']['text']
+            }
         logging.debug(content)
-        result = urllib2.urlopen("https://api.telegram.org/bot" + bot_id + "/sendMessage", urllib.urlencode(reply)).read()
+        result = urllib2.urlopen("https://api.telegram.org/bot" +
+                                 bot_id + "/sendMessage",
+                                 urllib.urlencode(reply)).read()
         logging.debug(result)
     return 'Message Recieved!'
 
