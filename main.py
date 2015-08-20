@@ -32,7 +32,7 @@ def getUpdates():
                                      bot_id + "/sendMessage",
                                      urllib.urlencode(reply)).read()
             logging.debug(result)
-    if 'audio' in content['message']:
+    if 'voice' in content['message']:
         reply = {
             "chat_id": content['message']['chat']['id'],
             "text": "Please don't use voice messages, or we will find you and we will kill you!"
