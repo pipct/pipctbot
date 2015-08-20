@@ -34,8 +34,8 @@ def getUpdates():
             logging.debug(result)
     if 'audio' in content['message']:
         reply = {
-            "chat_id": content['message']['user']['id'],
-            "text": "You have been banned for spamming the voice system"
+            "chat_id": content['message']['chat']['id'],
+            "text": "Please don't use voice messages, or we will find you and we will kill you!"
             }
         result = urllib2.urlopen("https://api.telegram.org/bot" +
                                  bot_id + "/sendMessage",
