@@ -37,6 +37,9 @@ def getUpdates():
             "chat_id": content['message']['user']['id'],
             "text": "You have been banned for spamming the voice system"
             }
+        result = urllib2.urlopen("https://api.telegram.org/bot" +
+                                 bot_id + "/sendMessage",
+                                 urllib.urlencode(reply)).read()
     return 'Message Recieved!'
 
 
