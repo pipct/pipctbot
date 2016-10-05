@@ -3,7 +3,7 @@ import urllib.request, urllib.parse, urllib.error
 import urllib.request, urllib.error, urllib.parse
 import json
 import logging
-application = app = Flask(__name__)
+main = application = app = Flask(__name__)
 app.config['DEBUG'] = True
 
 with open('config.json') as config:
