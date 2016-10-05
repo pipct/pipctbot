@@ -13,5 +13,6 @@ deploy:
   region: us-west-2
   app: pipctbot
   env: LowCost-env
+  bucket_name: elasticbeanstalk-us-west-2-762452562910
   on:
     repo: pipct/pipctbot
