@@ -10,3 +10,6 @@ deploy:
   provider: gae
   keyfile: client-secret.json
   project: pipctbot
+env:
+  global:
+    - CLOUDSDK_PYTHON="/usr/bin/env python2"
