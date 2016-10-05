@@ -5,7 +5,7 @@ script: echo "HI"
 before_install:
 - openssl aes-256-cbc -K $encrypted_54303265598a_key -iv $encrypted_54303265598a_iv
   -in secrets.tar.enc -out secrets.tar -d
-- xvf secrets.tar
+- tar xvf secrets.tar
 deploy:
   provider: gae
   keyfile: client-secret.json
