@@ -1,5 +1,4 @@
 __pycache__/
-config.json
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
