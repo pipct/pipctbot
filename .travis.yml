@@ -7,6 +7,8 @@ before_install:
   -in config.json.enc -out config.json -d
 before_deploy:
 - git add config.json
+- git config user.email "hack@example.com"
+- git config user.name "Awful Hack"
 - git commit -m "hack"
 deploy:
   provider: elasticbeanstalk
