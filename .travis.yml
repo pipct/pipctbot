@@ -1,13 +1,17 @@
 language: python
 python:
-- '2.7'
+- '3.4'
 script: echo "HI"
 before_install:
 - openssl aes-256-cbc -K $encrypted_54303265598a_key -iv $encrypted_54303265598a_iv
-  -in secrets.tar.enc -out secrets.tar -d
-- tar xvf secrets.tar
+  -in config.json.enc -out config.json -d
 deploy:
-  provider: gae
-  keyfile: client-secret.json
-  project: pipctbot
-
+  provider: elasticbeanstalk
+  access_key_id: AKIAJPJF6GF6MLOEUBWA
+  secret_access_key:
+    secure: bgkMOxPVgDwq+XT0UNplSLtKp8ZfTHXkXuwi2HrcD1qkMcGiHvlUDN4afFx0lHIpn/0jLdBIQ1y+taspBSdwhfrjSk513QEydA41OfI1Maz/RFF0G6wCbSTkb+y/rGCo9PDrcjSi4ayfvhK3LyrXHdn2mUq1GE3U6gMw5TV9fTdpfszf/FKU/bS9Ua0N9PmLAVPsuby719STvKdYfaftGG5k3Nr2o5kuTAJ03yxWFzGN5V02Yw8X+6X3X7hrwsUt7EFc3G3McZI9nv7zhvHDQAM09nbx0wxCY1d2sQMxjrT56aQLIddkfE2KaTHOn7ji5iAxXeLMp5yxuZZHsaF0FFtDrmIe+GOzLOQfESgzRvefylowGBbqXZw3wSDHG/DT3T04EMI4mBjlPf27svye7D2gJRDXiHiKW8EWasKSYNWwXXa+fvTy7+r6WS24YbaYi5qYecyRWeS43lT31BU0kcWRS6l8cb7Fq+L83QiEbMMlclFgjkpDnWS0VcZYvBo2asZcz6ML90R/ALNVzzCVBw8qiqhdLL5fiS4PfDVQNyRl4MSs3NmdTWqYoLhCPvFPBWCxq04oDqlZ+4PpSyVGSqi9DWv2SvEF6ALpMLO7D84UCeHD1IL2OS93Lkj/zhxgU4UUeMQP7iLiB+G5ny0mr7Ei6uKFBFdVg+i4kujRYME=
+  region: us-west-2
+  app: pipctbot
+  env: LowCost-env
+  on:
+    repo: pipct/pipctbot
