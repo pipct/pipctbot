@@ -1,6 +1,6 @@
 from flask import Flask, request
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import json
 import logging
 app = Flask(__name__)
@@ -28,18 +28,18 @@ def getUpdates():
                 "chat_id": content['message']['chat']['id'],
                 "text": content['message']['text']
                 }
-            result = urllib2.urlopen("https://api.telegram.org/bot" +
+            result = urllib.request.urlopen("https://api.telegram.org/bot" +
                                      bot_id + "/sendMessage",
-                                     urllib.urlencode(reply)).read()
+                                     urllib.parse.urlencode(reply)).read()
             logging.debug(result)
     if 'voice' in content['message']:
         reply = {
             "chat_id": content['message']['from']['id'],
             "text": "Please don't use voice messages, or we will find you and we will kill you!"
             }
-        result = urllib2.urlopen("https://api.telegram.org/bot" +
+        result = urllib.request.urlopen("https://api.telegram.org/bot" +
                                  bot_id + "/sendMessage",
-                                 urllib.urlencode(reply)).read()
+                                 urllib.parse.urlencode(reply)).read()
     return 'Message Recieved!'
 
 
