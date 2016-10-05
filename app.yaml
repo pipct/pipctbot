@@ -1,5 +1,0 @@
-vm: true
-runtime: python
-
-runtime_config:
-  python_version: 3
